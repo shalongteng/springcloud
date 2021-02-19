@@ -1,0 +1,22 @@
+#eureka client 单节点配置
+server:
+  port: 9300
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shalongteng/config-repo
+          username:
+          password:
+          timeout: 15
+          default-label: main
+
+  application:
+    name: spring-cloud-config
+
+eureka:
+  client:
+    #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。
+    #默认是http://localhost:8761/eureka ；多个地址可使用 , 分隔。
+    serviceUrl.defaultZone: http://localhost:8000/eureka/
