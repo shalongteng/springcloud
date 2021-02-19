@@ -1,13 +1,24 @@
 package com.slt.configclient.controller;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
- * @ProjectName: springcloud
- * @Package: com.slt.configclient.controller
- * @ClassName: TestController
- * @Author: shalongteng
- * @Description: ${description}
- * @Date: 2021-02-18 23:56
+ * @ProjectName: 使用该注解的类，会在接到SpringCloud配置中心配置刷新的时候，
+ * 自动将新的配置更新到该类对应的字段中。
  * @Version: 1.0
  */
+@RestController
+@RefreshScope
 public class TestController {
+    @Value("${env}")
+    private String env;
+
+    @RequestMapping("/hello")
+    public String index() {
+        return env;
+    }
+
 }

@@ -6,15 +6,20 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/shalongteng/config-repo
+#          uri: https://github.com/shalongteng/config-repo
+          uri: https://github.com/shalongteng/online-taxi-config-profile
           username:
           password:
           timeout: 15
-          default-label: main
+          default-label: master
 
   application:
-    name: spring-cloud-config
-
+    name: config-server
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   client:
     #设置与Eureka Server交互的地址，查询服务和注册服务都需要依赖这个地址。

@@ -16,14 +16,19 @@ public class WebhookController {
 	
 	@Autowired
 	private RestTemplate restTemplate;
-	
+	/** 
+	 * @Description: 因为GitHub的回调 body参数无法解析，所以当GitHub回调过来时候，
+	 * 自己手动 调用server刷新一下
+	 * @Author: shalongteng
+	 * @Date: 2021-02-19 
+	 */ 
 	@PostMapping("/bus-refresh")
 	public String refresh() {
 		
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(HttpHeaders.CONTENT_TYPE,"application/json");
         HttpEntity<String> request = new HttpEntity<>(httpHeaders);
-        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost/actuator/bus-refresh",
+        ResponseEntity<String> stringResponseEntity = restTemplate.postForEntity("http://localhost:9300/actuator/refresh",
                 request, String.class);
 
 		

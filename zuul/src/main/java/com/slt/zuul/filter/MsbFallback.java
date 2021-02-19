@@ -1,7 +1,22 @@
 package com.slt.zuul.filter;
 
+import com.netflix.hystrix.exception.HystrixTimeoutException;
+import org.springframework.cloud.netflix.zuul.filters.route.FallbackProvider;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.stereotype.Component;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+/**
+ * @Description: 网关熔断
+ * @Author: shalongteng
+ * @Date: 2021-02-17
+ */
 @Component
-public class MsbFallback implements FallbackProvider{
+public class MsbFallback implements FallbackProvider {
 
 	/**
 	 * 表明为哪个微服务提供回退
@@ -9,7 +24,6 @@ public class MsbFallback implements FallbackProvider{
 	 */
 	@Override
 	public String getRoute() {
-		// TODO Auto-generated method stub
 		return "*";
 	}
 
@@ -52,8 +66,7 @@ public class MsbFallback implements FallbackProvider{
 
             @Override
             public InputStream getBody() throws IOException {
-                String msg = "{\"msg\":\"服务故障\"}";
-            	return new ByteArrayInputStream(msg.getBytes());
+                return new ByteArrayInputStream("The service is unavailable.".getBytes());
             }
 
             @Override

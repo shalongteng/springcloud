@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Author: shalongteng
  * @Date: 2021-02-17
  */
-public class MyFilter extends ZuulFilter{
+public class TokenFilter extends ZuulFilter{
     /**
      * 定义filter的类型，有pre、route、post、error四种
      * 可以在请求被路由之前调用

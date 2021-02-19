@@ -1,13 +1,19 @@
 package com.slt.zuul.config;
 
+import com.slt.zuul.filter.TokenFilter;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+
 /**
- * @ProjectName: springcloud
- * @Package: com.slt.zuul.config
- * @ClassName: ZuulFilterConfig
- * @Author: shalongteng
- * @Description: ${description}
- * @Date: 2021-02-17 12:06
+ * @ProjectName: 将TokenFilter加入到请求拦截队列
  * @Version: 1.0
  */
+@Configuration
 public class ZuulFilterConfig {
+//    @Bean
+//    public TokenFilter tokenFilter() {
+//        return new TokenFilter();
+//    }
+
 }

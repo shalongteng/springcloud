@@ -1,19 +1,9 @@
 #eureka client 单节点配置
 server:
-  port: 9300
-spring:
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/shalongteng/config-repo
-          username:
-          password:
-          timeout: 15
-          default-label: main
-
-  application:
-    name: spring-cloud-config
+  port: 9301
+#spring:
+#  application:
+#    name: spring-cloud-config-client
 
 eureka:
   client:
