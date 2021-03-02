@@ -2,6 +2,13 @@
 server:
   port: 9200
 spring:
+  #zipkin
+  zipkin:
+    base-url: http://localhost:9411/
+    #采样比例1
+  sleuth:
+    sampler:
+      rate: 1
   application:
     name: spring-cloud-consumer
 eureka:
@@ -17,3 +24,16 @@ eureka:
 #    web:
 #      exposure:
 #        include: 'hystrix.stream'
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #yml加双引号，properties不用加
+        include: "*"
+    health:
+      ##默认是never
+      show-details: ALWAYS
+      enabled: true
